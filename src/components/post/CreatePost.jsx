@@ -29,19 +29,15 @@ const CreatePost = () => {
       id = uniqueId;
 
       response = await addPost({ ...form, uniqueId: id, url });
-
-      console.log("success: ", uniqueId);
-      console.log("url: ", url);
     } catch (err) {
       if (id) {
-        const response = await axios({
+        await axios({
           method: "post",
           url: `${import.meta.env.VITE_API_URL}/image/delete`,
           data: {
             id,
           },
         });
-        console.log("upload failed: ", response);
       }
       console.log(err);
     }

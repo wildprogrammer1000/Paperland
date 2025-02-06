@@ -10,7 +10,6 @@ const NakamaProvider = ({ children }) => {
   const login = async (id, callback) => {
     const session = await client.authenticateCustom(id, true);
     const account = await client.getAccount(session);
-    console.log(account);
     setNkm(client, session);
     callback(account);
   };
@@ -23,7 +22,6 @@ const NakamaProvider = ({ children }) => {
         nakamaConfig.useSSL === "true"
       );
       setClient(client);
-      console.log("nakama initialized");
     };
     initialize();
   }, []);
